@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 
 namespace JDGuardian.Controllers
 {
+    /// <summary>
+    /// 物品控制器
+    /// </summary>
     [ApiController]
     [Route("getWareBusiness")]
     [EnableCors("AllowCors")]
@@ -14,13 +17,12 @@ namespace JDGuardian.Controllers
         /// 获取物品价格信息
         /// </summary>
         /// <param name="skuId">物品id</param>
-        /// <param name="area">地区，格式示例：19_1601_50258_51885</param>
+        /// <param name="area">地区id组合，格式示例：19_1601_50258_51885</param>
         /// <returns></returns>
         [HttpGet]
         public async Task<Models.WareBusiness> Get(long skuId,string area)
         {
-            string result = await Helpers.HttpHelper.GetAsync($"https://item-soa.jd.com/getWareBusiness?skuId={skuId}&area={area}");
-            return JsonConvert.DeserializeObject<Models.WareBusiness>(result);
+            return await Models.WareBusiness.CreatAsync(skuId,area);
         }
     }
 }
