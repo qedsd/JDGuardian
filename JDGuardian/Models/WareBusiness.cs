@@ -28,6 +28,12 @@
             return Newtonsoft.Json.JsonConvert.DeserializeObject<Models.WareBusiness>(result);
         }
 
+        public static WareBusiness Creat(long skuId, string area)
+        {
+            string result = Helpers.HttpHelper.GetAsync($"https://item-soa.jd.com/getWareBusiness?skuId={skuId}&area={area}").Result;
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<Models.WareBusiness>(result);
+        }
+
         /// <summary>
         /// 是否有货可买
         /// </summary>
