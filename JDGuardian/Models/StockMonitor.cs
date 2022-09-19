@@ -2,7 +2,7 @@
 {
     public class StockMonitor : MonitorItem
     {
-        public StockMonitor(int span, long skuid, string area) : base(span, skuid, area)
+        public StockMonitor(string mail, int span, long skuid, string area) : base(mail,span, skuid, area)
         {
 
         }
@@ -15,11 +15,14 @@
             {
                 if(ware.IsStock())
                 {
-                    //todo:通知
+                    string content = $"{DateTime.Now}:{SkuId}({Id})有货";
+                    Console.WriteLine(content);
+                    Helpers.MailHelper.SendMail(Mail,content);
                 }
                 else
                 {
-                    //todo:通知
+                    string content = $"{DateTime.Now}:{SkuId}({Id})无货";
+                    Console.WriteLine(content);
                 }
             }
         }

@@ -22,6 +22,9 @@
 		public PlusTag PlusTag { get; set; }
 		public string Pp { get; set; }
 		public string Sdp { get; set; }
+		/// <summary>
+		/// 粉丝价格
+		/// </summary>
 		public string Sfp { get; set; }
 		public string Sp { get; set; }
 		public string Tkp { get; set; }

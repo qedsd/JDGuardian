@@ -2,12 +2,22 @@
 {
     public abstract class MonitorItem
     {
-        public MonitorItem(int span, long skuid,string area)
+        public MonitorItem(string mail, int span, long skuid,string area)
         {
+            Mail = mail;
+            Span = span;
+            SkuId = skuid;
+            Area = area;
             CreateTime = DateTime.Now;
+            LastTime = DateTime.Now;
             Id = Guid.NewGuid().ToString();
             Span = span;
+            RemainTime = span;
         }
+        public string Mail { get; set; }
+        /// <summary>
+        /// 索引id
+        /// </summary>
         public string Id { get; set; }
         /// <summary>
         /// 商品id
@@ -49,7 +59,7 @@
         /// </summary>
         public void Update()
         {
-            RemainTime = (int)(DateTime.Now - LastTime).TotalSeconds;
+            RemainTime = Span - (int)(DateTime.Now - LastTime).TotalSeconds;
         }
         /// <summary>
         /// 是否需要执行检查
