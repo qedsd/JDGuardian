@@ -25,14 +25,19 @@ builder.Services.AddCors(options =>
             }
         );
 });
+
 var app = builder.Build();
 
+app.Urls.Add("http://localhost:5002");
+app.Urls.Add("https://localhost:5003");
+
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+
+//}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
