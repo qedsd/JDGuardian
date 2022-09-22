@@ -2,7 +2,7 @@
 {
     public static class StockMonitorService
     {
-        private static Dictionary<string,Models.MonitorItem> Monitors = new Dictionary<string, Models.MonitorItem>();
+        public static Dictionary<string,Models.MonitorItem> Monitors = new Dictionary<string, Models.MonitorItem>();
         public static string AddStockMonitor(string mail, int span, long skuid, string area)
         {
             Models.StockMonitor stockMonitor = new Models.StockMonitor(mail,span, skuid,area);
