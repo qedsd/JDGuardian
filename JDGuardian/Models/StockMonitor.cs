@@ -17,7 +17,10 @@
                 {
                     string content = $"{DateTime.Now}:{SkuId}({Id})有货";
                     Console.WriteLine(content);
-                    Helpers.MailHelper.SendMail(Mail,content);
+                    if(Services.MailService.SendMail(Mail,"库存提醒",content))
+                    {
+                        Console.WriteLine($"已发送邮件到{Mail}");
+                    }
                 }
                 else
                 {

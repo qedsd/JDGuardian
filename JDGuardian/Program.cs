@@ -26,16 +26,29 @@ builder.Services.AddCors(options =>
         );
 });
 
+var mailSetting = builder.Configuration.GetSection("MailSetting").Get<JDGuardian.Models.MailSetting>();
+if(mailSetting != null)
+{
+    if(mailSetting.IsVaild())
+    {
+        JDGuardian.Services.MailService.MailSetting = mailSetting;
+    }
+    else
+    {
+        Console.WriteLine("邮箱未配置完成，请检查appsettings.json文件");
+    }
+}
+else
+{
+    Console.WriteLine("未配置邮箱，请检查appsettings.json文件");
+    return;
+}
+
 var app = builder.Build();
 
 app.Urls.Add("http://localhost:5002");
 app.Urls.Add("https://localhost:5003");
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-
-//}
 app.UseSwagger();
 app.UseSwaggerUI();
 
