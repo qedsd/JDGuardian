@@ -17,6 +17,7 @@ namespace JDGuardian.Services
                 {
                     //指定smtp服务地址（根据发件人邮箱指定对应SMTP服务器地址）
                     SmtpClient client = new SmtpClient();//格式：smtp.126.com  smtp.164.com
+                    smtpClient = client;
                     client.Host = MailSetting.Host;
                     //要用587端口
                     client.Port = 587;//端口
