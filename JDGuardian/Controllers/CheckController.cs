@@ -70,9 +70,9 @@ namespace JDGuardian.Controllers
         /// <param name="skuId">物品id</param>
         /// <param name="area">地区id组合，格式示例：19_1601_50258_51885</param>
         /// <returns></returns>
-        [Route("isWillMiaoshaing")]
+        [Route("isWillMiaosha")]
         [HttpGet]
-        public async Task<CheckResult> IsWillMiaoshaing(long skuId, string area)
+        public async Task<CheckResult> IsWillMiaosha(long skuId, string area)
         {
             var ware = await Models.WareBusiness.CreatAsync(skuId, area);
             if (ware == null)

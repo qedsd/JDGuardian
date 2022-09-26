@@ -125,7 +125,7 @@
 		/// 是否即将秒杀
 		/// </summary>
 		/// <returns></returns>
-		public bool IsWillMiaoshaing()
+		public bool IsWillMiaosha()
 		{
 			return State == 1;
 		}
