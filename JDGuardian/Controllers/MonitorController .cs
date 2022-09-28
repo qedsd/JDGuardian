@@ -16,16 +16,25 @@ namespace JDGuardian.Controllers
         /// <summary>
         /// 添加库存监控
         /// </summary>
-        /// <param name="mail">通知邮箱</param>
-        /// <param name="span">间隔，单位：秒</param>
-        /// <param name="skuid">商品id</param>
-        /// <param name="area">区域 格式示例：19_1601_50258_51885</param>
+        /// <param name="item">订阅数据</param>
         /// <returns>操作索引id</returns>
+        /// <remarks>
+        /// Post示例:
+        ///
+        ///     {
+        ///        "mail": "qq@qq.com",
+        ///        "span": 60,
+        ///        "skuId": 100016148888,
+        ///        "area": "19_1601_50258_51885"
+        ///     }
+        ///
+        /// </remarks>
         [Route("addStock")]
-        [HttpGet]
-        public string Get(string mail, int span, long skuid, string area)
+        [HttpPost]
+        [Produces("application/json")]
+        public string Post([FromBody] Models.CreateMonitorItem item)
         {
-            return Services.StockMonitorService.AddStockMonitor(mail,span, skuid, area);
+            return Services.StockMonitorService.AddStockMonitor(item.Mail, item.Span, item.SkuId, item.Area);
         }
 
         /// <summary>
