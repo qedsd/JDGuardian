@@ -6,6 +6,10 @@
     public class WareBusiness
     {
         /// <summary>
+        /// 物品基本信息
+        /// </summary>
+        public WareInfo WareInfo { get; set; }
+        /// <summary>
         /// 价格
         /// </summary>
         public Price Price { get; set; }
