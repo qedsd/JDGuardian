@@ -117,4 +117,6 @@ swagger接口均已写明注释，不再重述。仅挑几个特别说明一下
 - Xbox Series 手柄 锦鲤红 100017833496
 - Xbox 无线适配器 5028827
 
+来源于[WX-JDCheck](https://github.com/Gavin914/WX-JDCheck)
+
 巨硬你能不能硬一回？！
