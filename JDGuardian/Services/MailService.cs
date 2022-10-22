@@ -29,29 +29,33 @@ namespace JDGuardian.Services
                 return smtpClient;
             }
         }
-
+        private static object locker;
         public static bool SendMail(string to, string subject,string str)
         {
-            if (MailSetting != null)
+            lock (locker)
             {
-                MailMessage mailMsg = new MailMessage();//实例化对象
-                mailMsg.From = new MailAddress(MailSetting.Address, MailSetting.DisplayName);//源邮件地址和发件人
-                mailMsg.To.Add(new MailAddress(to));//收件人地址
-                mailMsg.Subject = subject;//发送邮件的标题
-                mailMsg.Body = str;//发送邮件的内容
-                try
+                if (MailSetting != null)
                 {
-                    SmtpClient.Send(mailMsg);
-                    return true;
+                    MailMessage mailMsg = new MailMessage();//实例化对象
+                    mailMsg.From = new MailAddress(MailSetting.Address, MailSetting.DisplayName);//源邮件地址和发件人
+                    mailMsg.To.Add(new MailAddress(to));//收件人地址
+                    mailMsg.Subject = subject;//发送邮件的标题
+                    mailMsg.Body = str;//发送邮件的内容
+                    try
+                    {
+                        SmtpClient.Send(mailMsg);
+                        return true;
+                    }
+                    catch (SmtpException ex)
+                    {
+                        Console.WriteLine(ex);
+                        return false;
+                    }
                 }
-                catch (SmtpException ex)
+                else
                 {
-                    Console.WriteLine(ex);
+                    Console.WriteLine("未配置邮箱");
                 }
-            }
-            else
-            {
-                Console.WriteLine("未配置邮箱");
             }
             return false;
         }

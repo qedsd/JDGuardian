@@ -21,6 +21,10 @@
                     {
                         Console.WriteLine($"已发送邮件到{Mail}");
                     }
+                    else
+                    {
+                        Console.WriteLine("发送邮件失败");
+                    }
                 }
                 else
                 {
