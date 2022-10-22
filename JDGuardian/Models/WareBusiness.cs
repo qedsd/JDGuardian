@@ -45,7 +45,7 @@
         public bool IsStock()
         {
             //可考虑配合https://cd.jd.com/stocks?type=getstocks&skuIds=100016148864&area=19_1601_50258_51885使用
-            return Price != null && Price.P != -1;
+            return Price != null && Price.P != -1 && StockInfo != null && StockInfo.StockState == 33;
         }
 
         /// <summary>

@@ -32,7 +32,7 @@ namespace JDGuardian.Models
 		/// 库存状态码
 		/// 33:有货 34:无货
 		/// </summary>
-		public string StockState { get; set; }
+		public int StockState { get; set; }
 		[JsonProperty(PropertyName = "stockInfo")]
 		public StockInfoSub StockInfoSub { get; set; }
 		public string SupportHKMOShip { get; set; }
