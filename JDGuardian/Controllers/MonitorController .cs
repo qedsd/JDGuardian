@@ -34,7 +34,12 @@ namespace JDGuardian.Controllers
         [Produces("application/json")]
         public string Post([FromBody] Models.CreateMonitorItem item)
         {
-            return Services.StockMonitorService.AddStockMonitor(item.Mail, item.Span, item.SkuId, item.Area);
+            string id =  Services.StockMonitorService.AddStockMonitor(item.Mail, item.Span, item.SkuId, item.Area);
+            if(!string.IsNullOrEmpty(id))
+            {
+                Services.MailService.SendMail(item.Mail, "JDGuardian库存监控", $"已添加 https://item.jd.com/{item.SkuId}.html 到库存监控列表");
+            }
+            return id;
         }
 
         /// <summary>
