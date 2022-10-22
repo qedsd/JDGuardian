@@ -15,7 +15,7 @@
             {
                 if(ware.IsStock())
                 {
-                    string content = $"{DateTime.Now}:{SkuId}({Id})有货";
+                    string content = $"{DateTime.Now}:https://item.jd.com/{SkuId} ({Id})有货";
                     Console.WriteLine(content);
                     if(Services.MailService.SendMail(Mail,"库存提醒",content))
                     {
