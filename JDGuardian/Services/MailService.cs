@@ -29,7 +29,7 @@ namespace JDGuardian.Services
                 return smtpClient;
             }
         }
-        private static object locker;
+        private static object locker = new object();
         public static bool SendMail(string to, string subject,string str)
         {
             lock (locker)
